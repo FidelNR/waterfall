@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+# Resumen sobre solución del *Waterfall*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Promesas Paralelas:
+- Se presentó cómo realizar **múltiples solicitudes** de datos en paralelo utilizando promesas.
+- La idea es no esperar a todas las solicitudes antes de actualizar el estado, sino actualizar el estado independientemente para cada solicitud a medida que se completan.
 
-Currently, two official plugins are available:
+### Proveedores de Datos:
+- Se introdujo el concepto de *proveedores de datos* para abstraer la obtención de datos en un solo lugar de la aplicación.
+- Los proveedores de datos utilizan el contexto de *React* para proporcionar datos a componentes secundarios sin necesidad de pasar props manualmente.
+- Esto ayuda a evitar la perforación de props y mejora la legibilidad y la organización del código.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Recuperación de Datos Antes de React:
+- Se discutió cómo mover las llamadas de recuperación de datos fuera del ciclo de vida de *React* puede mejorar el rendimiento al evitar las **cascadas de solicitudes**.
+- Al mover las llamadas de recuperación antes de que *React* comience a renderizar componentes, se pueden obtener los datos de manera más eficiente y sin afectar el **rendimiento de la aplicación**.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Bibliotecas y Suspense:
+- Se mencionó que si bien se pueden utilizar bibliotecas como **Axios o SWR** para manejar las solicitudes de datos, los principios fundamentales de obtención de datos en *React* **siguen siendo los mismos**.
+- Se señaló que el *Suspense* para la obtención de datos todavía está en **fase experimental** en *React*, pero puede ser una herramienta útil para manejar el estado de carga de manera más elegante en el futuro.
